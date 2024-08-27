@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import client from './utils/apolloClient';
@@ -13,18 +13,6 @@ const Portfolio = lazy(() => import('./views/Portfolio'));
 const PortfolioEntry = lazy(() => import('./views/PortfolioEntry'));
 
 function App() {
-  const [shouldLazyLoad, setShouldLazyLoad] = useState(false);
-
-  useEffect(() => {
-    // Check if the user is on a slow network, and if so will enable lazy loading
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-
-    if (connection) {
-      const slowNetwork = connection.effectiveType === '2g' || connection.effectiveType === '3g' || connection.saveData;
-      setShouldLazyLoad(slowNetwork);
-    }
-
-  }, []);
 
   const router = createBrowserRouter([
     {
@@ -69,13 +57,9 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      {shouldLazyLoad ? ( //only show the loading component if user is on a slow network
         <Suspense fallback={<Loading />}>
           <RouterProvider router={router} />
         </Suspense>
-      ) : (
-        <RouterProvider router={router} />
-      )}
     </ApolloProvider>
   );
 }
