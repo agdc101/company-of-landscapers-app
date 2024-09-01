@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = new HttpLink({
-    uri: 'https://company-of-landscapers-app-git-master-agdc101s-projects.vercel.app', //change for production
+    uri: 'https://company-of-landscapers-app.vercel.app', //change for production
 });
 
 // Create a middleware link to add the Authorization header
