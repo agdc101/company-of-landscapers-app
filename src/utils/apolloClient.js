@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = new HttpLink({
-    uri: 'http://161.35.163.106/api', //change for production
+    uri: 'https://admin.thecompanyoflandscapers.co.uk/api', //change for production
 });
 
 // Create a middleware link to add the Authorization header
