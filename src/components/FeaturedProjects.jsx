@@ -31,6 +31,7 @@ export default function FeaturedProjects({projectsData}) {
             <div className="flex flex-col justify-evenly text-center items-center">
                 <Carousel plugins={[ Autoplay({delay: 2500}) ]} >
                     <motion.div 
+                        className="w-11/12 md:w-full mx-auto"
                         ref={featProjects}  
                         style={{
                         transform: featProjectsIsInView ? "none" : "translateY(100px)",
@@ -39,14 +40,14 @@ export default function FeaturedProjects({projectsData}) {
                         <CarouselContent>
                             {projectsData.map((project, index) => (
                                 <CarouselItem key={index} className="md:basis-1/2 xl:basis-1/3">
-                                    <Card className="w-[90%] md:w-[100%] mx-auto">
+                                    <Card className="w-[85%] md:w-[100%] mx-auto">
                                         <CardContent>
                                             <h4 className="text-2xl mt-5">{project.title}</h4>
-                                            <p className="my-5 md:my-8">{project.description}</p>
+                                            <p className="text-slate-800 italic my-5 md:my-8 2xl:text-lg">{project.description}</p>
                                             <Link to={`/portfolio/${project.slug}`}>
                                                 <img loading="lazy" className="rounded shadow-custom mx-auto" src={project.portfolioImage[0].url} alt={project.portfolioImage[0].alt} />
                                             </Link>
-                                            <Link to={`/portfolio/${project.slug}`} className="mt-5 border italic block text-center rounded py-2 w-2/6 md:w-3/6 lg:w-3/6 m-auto">View project</Link>
+                                            <Link to={`/portfolio/${project.slug}`} className="mt-5 border italic block text-center rounded py-2 w-2/6 md:w-3/6 lg:w-3/6 m-auto xl:text-lg 2xl:mt-7">View project</Link>
                                         </CardContent>
                                     </Card>
                                 </CarouselItem>

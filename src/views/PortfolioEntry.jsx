@@ -27,7 +27,7 @@ export default function PortfolioEntry() {
          <motion.div key={slug} className="grid grid-cols-1 gap-10 lg:gap-4" {...framerAnimations.slideRightFadeIn}>
             <div className="container py-2 md:py-4 xl:py-16">
                <p className="text-xl lg:text-3xl xl:text-4xl text-center py-8 xl:pb-16">{entry.description}</p>
-               <p className="text-center lg:text-xl xl:text-2xl xl:mb-6">{entry.projectDescription}</p>
+               <p className="text-center text-slate-600 lg:text-xl xl:text-2xl xl:mb-6">{entry.projectDescription}</p>
             </div>
             <div className="bg-[#fdf1e8] p-4 md:px-16 xl:px-20 md:mb-2 xl:mb-0 lg:py-12 lg:px-6 md:pt-8 flex">
                <Carousel plugins={[ Autoplay({ delay: 4000 }) ]}>
