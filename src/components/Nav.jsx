@@ -12,6 +12,10 @@ const Nav = (error) => {
     const boxShadow = useTransform(scrollY, [400, 1000], ["none", "0px 5px 12px rgba(0, 0, 0, 0.85)"]);
     const titleScale = useTransform(scrollY, [0, 100], [1, 1.065]);
 
+    function closeMobNav () {
+        setOpen(false);
+    }
+
     //disable scrolling when mobile nav is open
     useEffect(() => {
         isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
@@ -36,9 +40,9 @@ const Nav = (error) => {
                     <nav className="md:hidden">
                         <motion.div className="bg-white absolute top-0 left-0 right-0 bottom-0 z-30 h-screen" {...framerAnimations.mobileNav}>
                             <ul className="card-header-icon font-light mt-24">
-                                <li className="p-7 text-3xl"><NavLink to="/" className="font-light text-black">Home</NavLink></li>
-                                <li className="p-7 text-3xl"><NavLink end to="/our-work" className="font-light text-black">Our Work</NavLink></li>
-                                <li className="p-7 text-3xl"><NavLink to="/contact" className="font-light text-black">Contact</NavLink></li>
+                                <li className="p-7 text-3xl"><NavLink onClick={closeMobNav} to="/" className="font-light text-black">Home</NavLink></li>
+                                <li className="p-7 text-3xl"><NavLink onClick={closeMobNav} end to="/portfolio" className="font-light text-black">Our Work</NavLink></li>
+                                <li className="p-7 text-3xl"><NavLink onClick={closeMobNav} to="/contact" className="font-light text-black">Contact</NavLink></li>
                             </ul>
                         </motion.div>
                     </nav>
