@@ -6,6 +6,7 @@ import framerAnimations from "@/utils/framer-anims";
 import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Image } from 'antd';
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function PortfolioEntry() {
    const { portfolioData, error, loading } = useLoaderData();
@@ -36,10 +37,14 @@ export default function PortfolioEntry() {
                      <Image.PreviewGroup>
                         {entry.portfolioImage.map((image, index) => (
                            <CarouselItem className="md:basis-1/2 lg:basis-1/3" key={index}>
-                              <figure className="mt-auto">
-                                 <Image className="rounded" src={image.url} alt={image.alt} />
-                                 <figcaption className="italic mt-2 md:mb-2 text-sm xl:text-xl text-center">{image.title}</figcaption>
-                              </figure>
+                              <Card className="mx-auto">
+                                 <CardContent className="p-3">
+                                    <figure className="">
+                                       <Image className="rounded" src={image.url} alt={image.alt} />
+                                       <figcaption className="italic mt-2 md:mb-2 text-sm xl:text-xl text-center">{image.title}</figcaption>
+                                    </figure>
+                                 </CardContent>
+                              </Card>
                            </CarouselItem>
                         ))}
                      </Image.PreviewGroup>

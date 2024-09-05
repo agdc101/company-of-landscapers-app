@@ -7,10 +7,10 @@ const framerAnimations = {
     },
 
     mobileNav: {
-        initial: { x: -800 },
+        initial: { x: -500 },
         animate: { x: 0 },
-        exit: { x: -800 },
-        transition: { duration: 1 }
+        exit: { x: -500 },
+        transition: { duration: 0.75 }
     },
 
     slideRightFadeIn: {
