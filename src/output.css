@@ -807,10 +807,6 @@ body {
   margin-top: 2rem;
 }
 
-.mt-auto {
-  margin-top: auto;
-}
-
 .block {
   display: block;
 }
@@ -871,6 +867,10 @@ body {
   max-height: 50dvh;
 }
 
+.min-h-44 {
+  min-height: 11rem;
+}
+
 .min-h-svh {
   min-height: 100svh;
 }
@@ -913,10 +913,6 @@ body {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[95\%\] {
-  width: 95%;
 }
 
 .min-w-0 {
@@ -1246,6 +1242,11 @@ body {
   padding-bottom: 2rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -1369,6 +1370,10 @@ body {
 
 .tracking-wider {
   letter-spacing: 0.05em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
 }
 
 .text-black {
@@ -1950,6 +1955,18 @@ a:hover {
     margin-top: 2rem;
   }
 
+  .xl\:mb-28 {
+    margin-bottom: 7rem;
+  }
+
+  .xl\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .xl\:mb-20 {
+    margin-bottom: 5rem;
+  }
+
   .xl\:block {
     display: block;
   }
@@ -2030,6 +2047,16 @@ a:hover {
     padding-bottom: 6rem;
   }
 
+  .xl\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .xl\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   .xl\:pb-16 {
     padding-bottom: 4rem;
   }
@@ -2080,6 +2107,11 @@ a:hover {
   .xl\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .xl\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
   }
 }
 
@@ -2135,5 +2167,10 @@ a:hover {
   .\32xl\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .\32xl\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
