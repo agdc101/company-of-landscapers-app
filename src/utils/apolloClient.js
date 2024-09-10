@@ -2,12 +2,12 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = new HttpLink({
-    uri: import.meta.env.GRAPHQL_URL,
+    uri: import.meta.env.VITE_GRAPHQL_URL,
 });
 
 // Create a middleware link to add the Authorization header
 const authLink = setContext((_, { headers }) => {
-  const token = import.meta.env.GRAPHQL_TOKEN;
+  const token = import.meta.env.VITE_GRAPHQL_TOKEN;
   return {
     headers: {
       ...headers,
