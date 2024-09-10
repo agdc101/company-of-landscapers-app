@@ -9,6 +9,10 @@ import Error from './Error';
 const Home = () => {
   const { homepageData, error, loading } = useLoaderData();
 
+  //log out .env variables
+  console.log(process.env.GRAPHQL_URL);
+  console.log(process.env.GRAPHQL_TOKEN);
+
   const homePage = homepageData.homeEntries[0];
   const featuredProjectsData = homepageData.entries;
 
