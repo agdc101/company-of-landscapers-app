@@ -9,7 +9,7 @@ const Nav = (error) => {
     const [isOpen, setOpen] = useState(false);
     const { scrollY } = useScroll();
     const backgroundColor = useTransform(scrollY, [0, 200], ["rgba(0, 0, 0, 0)", "rgba(84, 111, 104, 1)"]);
-    const boxShadow = useTransform(scrollY, [400, 1000], ["none", "0px 5px 12px rgba(0, 0, 0, 0.85)"]);
+    const boxShadow = useTransform(scrollY, [100, 1000], ["none", "0px 5px 12px rgba(0, 0, 0, 0.85)"]);
     const titleScale = useTransform(scrollY, [0, 100], [1, 1.065]);
 
     function closeMobNav () {
