@@ -1764,6 +1764,11 @@ a:hover {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2087,6 +2092,10 @@ a:hover {
 
   .\32xl\:max-h-\[40dvh\] {
     max-height: 40dvh;
+  }
+
+  .\32xl\:max-h-\[45dvh\] {
+    max-height: 45dvh;
   }
 
   .\32xl\:w-1\/2 {
