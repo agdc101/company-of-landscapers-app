@@ -40,7 +40,7 @@ export default function FeaturedProjects({projectsData}) {
                         <CarouselContent>
                             {projectsData.map((project, index) => (
                                 <CarouselItem key={index} className="md:basis-1/2 xl:basis-1/3">
-                                    <Card className="w-[85%] md:w-[100%] mx-auto">
+                                    <Card className="w-[70%] md:w-[100%] mx-auto">
                                         <CardContent>
                                             <h4 className="text-2xl mt-5">{project.title}</h4>
                                             <p className="text-slate-800 italic my-5 md:my-8 2xl:text-lg">{project.description}</p>
