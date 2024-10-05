@@ -1886,6 +1886,11 @@ a:hover {
     line-height: 1.75rem;
   }
 
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .lg\:font-light {
     font-weight: 300;
   }
@@ -2049,11 +2054,6 @@ a:hover {
     line-height: 1;
   }
 
-  .xl\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
-
   .xl\:text-8xl {
     font-size: 6rem;
     line-height: 1;
@@ -2072,6 +2072,11 @@ a:hover {
   .xl\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .xl\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
 
@@ -2114,11 +2119,6 @@ a:hover {
     line-height: 1;
   }
 
-  .\32xl\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
-
   .\32xl\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -2127,5 +2127,10 @@ a:hover {
   .\32xl\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .\32xl\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
