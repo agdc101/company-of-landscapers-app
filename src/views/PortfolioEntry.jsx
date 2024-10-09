@@ -31,7 +31,7 @@ export default function PortfolioEntry() {
                <p className="text-center text-slate-600 lg:text-xl xl:text-2xl xl:mb-6">{entry.projectDescription}</p>
             </div>
             <div className="bg-[#fdf1e8] p-4 md:px-16 xl:px-20 md:mb-2 xl:mb-0 lg:py-12 lg:px-6 md:pt-8 flex">
-               <Carousel plugins={[ Autoplay({ delay: 4000 }) ]}>
+               <Carousel plugins={[ Autoplay({ delay: 2500 }) ]}>
                   <p className="mb-4 xl:mb-6 lg:text-xl xl:text-2xl">{entry.title} in Pictures:</p>
                   <CarouselContent>
                      <Image.PreviewGroup>

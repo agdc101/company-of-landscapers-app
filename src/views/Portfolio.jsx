@@ -54,7 +54,7 @@ export default function Portfolio() {
                               <Link to={`/portfolio/${entry.slug}`} className="hover:text-black">
                                  <h2 className="text-xl xl:text-2xl font-medium text-center my-2">{entry.title}</h2>
                                  <p className="text-center xl:text-lg my-4 xl:my-6 italic">{entry.description}</p>
-                                 <Carousel plugins={[ Autoplay({delay: 3000}) ]} >
+                                 <Carousel plugins={[ Autoplay({delay: 2500}) ]} >
                                     <CarouselContent>
                                           {entry.portfolioImage.map((image, index) => (
                                              <CarouselItem key={index}>
