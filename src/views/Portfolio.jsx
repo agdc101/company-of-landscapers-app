@@ -37,10 +37,10 @@ export default function Portfolio() {
       <>
          <Hero imageUrl={portfolioHomeData.heroImage[0].url} imageAlt={portfolioHomeData.heroImage[0].alt} title={portfolioHomeData.title} />
          <motion.section className="bg-[#fdf1e8]" {...framerAnimations.slideRightFadeIn} >
-            <div className="py-6 lg:py-12 xl:py-16 text-center px-4 xl:px-8">
-               <p className="text-lg xl:text-2xl xl:mb-16 max-w-5xl text-center mx-auto">{portfolioHomeData.description}</p>
+            <div className="py-2 text-center px-4 xl:px-8">
+               {portfolioHomeData.description && <p className="text-lg xl:text-2xl xl:mb-16 max-w-5xl text-center mx-auto">{portfolioHomeData.description}</p>}
                <motion.div key={startIndex} 
-                  className="mt-10 mb-8 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-6" 
+                  className="mt-6 mb-8 lg:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-6" 
                   initial="initial"
                   animate="animate"
                   exit="exit"
