@@ -10,10 +10,11 @@ Ensure you have the following installed before running the project:
 - **Craft CMS Backend** (Run [Company of Landscapers Craft App](https://github.com/agdc101/company-of-landscapers/))  
 
 ## Installation  
-1. **Clone the repository:**  
+1. **Clone and change into repository:**  
    ```bash
-   git clone https://github.com/your-username/company-of-landscapers-frontend.git
-   cd company-of-landscapers-app
+   git clone https://github.com/agdc101/company-of-landscapers-app.git && cd company-of-landscapers-app
+
+   ```
 
 ## Start app:
 ```bash
