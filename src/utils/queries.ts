@@ -1,5 +1,34 @@
 import { gql } from '@apollo/client';
 
+interface IImage {
+  alt: string;
+  url: string;
+}
+
+interface IPortfolioEntry {
+  title: string;
+  description: string;
+  slug: string;
+  portfolioImage: IImage;
+}
+
+interface IHomeEntry {
+  heroTitle: string;
+  heroText: string;
+  heroImage: IImage[];
+  introTitle: string;
+  introDescription: string;
+  introImage: IImage;
+  experienceTitle: string;
+  experienceDescription: string;
+  experienceImage: IImage;
+}
+
+export interface IHomepageData {
+  homeEntries: IHomeEntry[],
+  entries: IPortfolioEntry[];
+}
+
 export const get_global_set = gql`
   query getGlobalSet {
     globalSet {
@@ -18,7 +47,7 @@ export const get_global_set = gql`
     }
   }`;
 
-export const get_homepage_set = gql`
+export const get_homepage_set  = gql`
   query getHomepage {
     homeEntries {
       ... on home_Entry {

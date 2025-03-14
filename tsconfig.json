@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "outDir": "./built",
+    "allowJs": true,
+    "target": "ES6",
+    "module": "NodeNext",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "tests/*"
+  ]
+}

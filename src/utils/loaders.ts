@@ -1,13 +1,13 @@
+import client from './apolloClient.js';
+import { DocumentNode } from 'graphql';
+import { get_homepage_set, get_portfolio_set, get_global_set, get_contact_set } from './queries.js';
 
-import client from './apolloClient';
-import { get_homepage_set, get_portfolio_set, get_global_set, get_contact_set } from './queries';
-
-const loadData = async (query, key) => {
+const loadData = async (query : DocumentNode, key : string) => {
   try {
     const { data } = await client.query({ query });
-    return { [key]: data };
+    return { [key]: data, error : null };
   } catch (error) {
-    return { error };
+    return { [key]: null, error : true };
   }
 };
 
@@ -18,4 +18,3 @@ export const homePageLoader = () => loadData(get_homepage_set, 'homepageData');
 export const portfolioPageLoader = () => loadData(get_portfolio_set, 'portfolioData');
 
 export const contactPageLoader = () => loadData(get_contact_set, 'contactData');
-

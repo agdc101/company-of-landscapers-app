@@ -1,14 +1,15 @@
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration, useNavigation } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import QuickLinks from "./QuickLinks";
 import { useLoaderData } from "react-router-dom";
 import Error from "../views/Error";
+import Loading from "../views/Loading.jsx";
 
 export default function RootLayout() {
-    const { globalData, error, loading } = useLoaderData();
+    const navigation = useNavigation();
+    const { globalData, error } = useLoaderData();
 
-    if (loading) return <><Nav/><h3 className="text-center mt-32 text-2xl">Loading...</h3></>;
     if (error) return ( <Error/>);
 
     return (
@@ -16,7 +17,7 @@ export default function RootLayout() {
             <ScrollRestoration />
             <Nav />
             <main className="flex-1">
-                <Outlet />
+                {navigation.state === "loading" ? <Loading/> : <Outlet/>}
             </main>
             <QuickLinks globalData={globalData} />
             <Footer />
