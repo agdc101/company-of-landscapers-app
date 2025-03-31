@@ -5,7 +5,7 @@ import Introduction from "../components/Introduction.jsx";
 import Experience from "../components/Experience.jsx";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Error from './Error.jsx';
-import { IHomepageData } from '../utils/queries.js';
+import { IHomepageData } from '../utils/types.js';
 
 const Home:FC = () => {
   const loaderData = useLoaderData() as { homepageData: IHomepageData; error: boolean };

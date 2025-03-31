@@ -1,23 +1,30 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, FormEvent } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import Hero from '@/components/Hero';
-import Error from './Error';
-import Loading from './Loading';
+import Hero from '../components/Hero.jsx';
+import Error from './Error.jsx';
+import Loading from './Loading.jsx';
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
-import framerAnimations from '@/utils/framer-anims';
+import framerAnimations from '../utils/framer-anims.js';
+import { IContactPageData } from '../utils/types.js';
 
 export const Contact = () => {
-    const form = useRef();
-    const { contactData, error, loading } = useLoaderData();
+    const form = useRef<HTMLFormElement>(null);
+    const contactPageLoaderData = useLoaderData() as { contactData: IContactPageData; error: boolean, loading: boolean };
+
+    const { contactData, error, loading } = contactPageLoaderData;
     const [ emailSent, setEmailSent ] = useState(false);
     const [ emailLoading, setEmailLoading ] = useState(false);
     const [ emailError, setEmailError ] = useState(false);
 
-    const sendEmail = (e) => {
+    console.log(contactPageLoaderData);
+
+    const sendEmail = (e : FormEvent) => {
         e.preventDefault();
         setEmailLoading(true);
+
+        if (!form.current) return;
 
         emailjs.sendForm('contact_form_service', 'template_6ku2azn', form.current, {
             publicKey: 'GsRrK0jMcTebFw0Jp',
