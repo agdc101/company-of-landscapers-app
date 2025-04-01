@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import HomeHero from '../components/HomeHero.jsx';
 import Introduction from "../components/Introduction.jsx";
-import Experience from "../components/Experience.jsx";
+import Experience from "../components/Experience.js";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Error from './Error.jsx';
 import { IHomepageData } from '../utils/types.js';

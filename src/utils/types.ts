@@ -10,7 +10,7 @@ interface IPortfolioEntry {
   portfolioImage: IImage;
 }
 
-interface IHomeEntry {
+export interface IHomeEntry {
   heroTitle: string;
   heroText: string;
   heroImage: IImage[];
@@ -19,7 +19,7 @@ interface IHomeEntry {
   introImage: IImage;
   experienceTitle: string;
   experienceDescription: string;
-  experienceImage: IImage;
+  experienceImage: IImage[];
 }
 
 interface IContactEntry {

@@ -1,10 +1,15 @@
-import { useRef } from "react";
+import React, { FC, useRef } from "react";
 import { useInView } from "framer-motion";
+import { IHomeEntry } from "../utils/types.js";
 
-export default function Experience({homePage}) {
-    const expTextRef = useRef(null);
+interface ExperienceProps {
+    homePage: IHomeEntry;
+}
+
+const Experience: FC<ExperienceProps> = ({ homePage }) => {
+    const expTextRef = useRef<HTMLDivElement>(null);
     const expTextIsInView = useInView(expTextRef, { once: true });
-    const expImageRef = useRef(null);
+    const expImageRef = useRef<HTMLImageElement>(null);
 
     return (
         <section className="flex flex-col items-center xl:flex-row-reverse justify-around py-20 px-2 xl:px-10 2xl:py-28 bg-slate-200">
@@ -28,3 +33,5 @@ export default function Experience({homePage}) {
         </section>
     );
 }
+
+export default Experience;
