@@ -1,16 +1,16 @@
 import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-import client from './utils/apolloClient';
-import RootLayout from './components/Layout';
-import Error from './views/Error';
-import NotFound from './views/NotFound';
-import { globalLoader, homePageLoader, portfolioPageLoader, contactPageLoader } from './utils/loaders';
-import Loading from './views/Loading';  
-import { Contact } from './views/Contact';
-const Home = lazy(() => import('./views/Home'));
-const Portfolio = lazy(() => import('./views/Portfolio'));
-const PortfolioEntry = lazy(() => import('./views/PortfolioEntry'));
+import client from './utils/apolloClient.js';
+import RootLayout from './components/Layout.jsx';
+import Error from './views/Error.jsx';
+import NotFound from './views/NotFound.jsx';
+import { globalLoader, homePageLoader, portfolioPageLoader, contactPageLoader } from './utils/loaders.js';
+import Loading from './views/Loading.jsx';  
+import { Contact } from './views/Contact.js';
+const Home = lazy(() => import('./views/Home.js'));
+const Portfolio = lazy(() => import('./views/Portfolio.jsx'));
+const PortfolioEntry = lazy(() => import('./views/PortfolioEntry.jsx'));
 
 function App() {
 
