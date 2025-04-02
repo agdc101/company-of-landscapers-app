@@ -4,14 +4,14 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { Card, CardContent } from "@/components/ui/card"
+} from "./ui/carousel.jsx";
+import Autoplay from "embla-carousel-autoplay";
+import { Card, CardContent } from "./ui/card";
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import React, { useRef, FC } from 'react';
 import { useInView, motion } from 'framer-motion';
 
-export default function FeaturedProjects({projectsData}) {
+const FeaturedProjects = ({projectsData}) => {
     const featProjects = useRef(null);
     const featProjectsTitle = useRef(null);
 
@@ -63,3 +63,5 @@ export default function FeaturedProjects({projectsData}) {
     )
 
 }
+
+export default FeaturedProjects;

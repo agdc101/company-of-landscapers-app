@@ -3,7 +3,7 @@ interface IImage {
   url: string;
 }
 
-interface IPortfolioEntry {
+export interface IPortfolioEntry {
   title: string;
   description: string;
   slug: string;
