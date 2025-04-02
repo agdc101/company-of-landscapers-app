@@ -6,13 +6,13 @@ import Experience from "../components/Experience.js";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Error from './Error.jsx';
 import { IHomepageData } from '../utils/types.js';
-interface HomeLoaderData {
+interface HomePageLoaderData {
   homepageData: IHomepageData;
   error: boolean;
 }
 
 const Home = () => {
-  const loaderData = useLoaderData() as HomeLoaderData;
+  const loaderData = useLoaderData() as HomePageLoaderData;
 
   const { homepageData, error } = loaderData;
 
@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
       <HomeHero imageUrl={homePage.heroImage[0].url} imageAlt={homePage.heroImage[0].alt} title={homePage.heroTitle} text={homePage.heroText} />
-      <Introduction homePage={homePage} />
+      <Introduction homePageData={homePage} />
       <Experience homePage={homePage} />
       <FeaturedProjects projectsData={featuredProjectsData} />
     </>

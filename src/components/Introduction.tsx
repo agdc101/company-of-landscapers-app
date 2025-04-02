@@ -1,7 +1,13 @@
+import React from "react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { IHomeEntry } from "../utils/types.js";
 
-export default function Introduction({homePage}) {
+interface IIntroductionProps {
+    homePageData: IHomeEntry;
+}
+
+const Introduction = ({homePageData}: IIntroductionProps) => {
     const introTextRef = useRef(null);
     const introTextIsInView = useInView(introTextRef, { once: true });
     const introImageRef = useRef(null);
@@ -14,11 +20,11 @@ export default function Introduction({homePage}) {
                     opacity: introTextIsInView ? 1 : 0,
                     transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                 }}>
-                <h4 className="text-4xl 2xl:text-5xl">{homePage.introTitle}</h4>
-                <p className="text-slate-600 my-14 text-xl xl:my-20 xl:text-2xl 2xl:text-3xl">{homePage.introDescription}</p>
+                <h4 className="text-4xl 2xl:text-5xl">{homePageData.introTitle}</h4>
+                <p className="text-slate-600 my-14 text-xl xl:my-20 xl:text-2xl 2xl:text-3xl">{homePageData.introDescription}</p>
             </div>
             <div className="xl:block px-4 md:w-3/6 max-w-screen-md">
-                <img loading="lazy" ref={introImageRef} className="rounded shadow-custom" src={homePage.introImage[0].url} alt={homePage.introImage[0].alt}
+                <img loading="lazy" ref={introImageRef} className="rounded shadow-custom" src={homePageData.introImage[0].url} alt={homePageData.introImage[0].alt}
                     style={{
                         transform: introTextIsInView ? "none" : "translateX(100px)",
                         opacity: introTextIsInView ? 1 : 0,
@@ -29,3 +35,5 @@ export default function Introduction({homePage}) {
         </section>
     );
 }
+
+export default Introduction;

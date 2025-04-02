@@ -3,25 +3,6 @@ interface IImage {
   url: string;
 }
 
-export interface IPortfolioEntry {
-  title: string;
-  description: string;
-  slug: string;
-  portfolioImage: IImage;
-}
-
-export interface IHomeEntry {
-  heroTitle: string;
-  heroText: string;
-  heroImage: IImage[];
-  introTitle: string;
-  introDescription: string;
-  introImage: IImage;
-  experienceTitle: string;
-  experienceDescription: string;
-  experienceImage: IImage[];
-}
-
 interface IContactEntry {
   id: string;
   title: string;
@@ -39,6 +20,25 @@ interface IGlobalSetData {
 interface IContactPageData {
   contactEntries: IContactEntry[],
   globalSet: IGlobalSetData;
+}
+
+export interface IPortfolioEntry {
+  title: string;
+  description: string;
+  slug: string;
+  portfolioImage: IImage;
+}
+
+export interface IHomeEntry {
+  heroTitle: string;
+  heroText: string;
+  heroImage: IImage[];
+  introTitle: string;
+  introDescription: string;
+  introImage: IImage[];
+  experienceTitle: string;
+  experienceDescription: string;
+  experienceImage: IImage[];
 }
 
 export interface ContactLoaderData {
