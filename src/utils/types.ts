@@ -36,9 +36,15 @@ interface IGlobalSetData {
   phoneNumber: string,
 }
 
-export interface IContactPageData {
+interface IContactPageData {
   contactEntries: IContactEntry[],
   globalSet: IGlobalSetData;
+}
+
+export interface ContactLoaderData {
+    contactData: IContactPageData;
+    error: boolean;
+    loading: boolean;
 }
 
 export interface IHomepageData {

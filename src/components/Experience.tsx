@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { useRef } from "react";
 import { useInView } from "framer-motion";
 import { IHomeEntry } from "../utils/types.js";
 
@@ -6,7 +6,7 @@ interface ExperienceProps {
     homePage: IHomeEntry;
 }
 
-const Experience: FC<ExperienceProps> = ({ homePage }) => {
+const Experience = ({ homePage }: ExperienceProps ) => {
     const expTextRef = useRef<HTMLDivElement>(null);
     const expTextIsInView = useInView(expTextRef, { once: true });
     const expImageRef = useRef<HTMLImageElement>(null);

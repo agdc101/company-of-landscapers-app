@@ -1,24 +1,22 @@
 import React, { useRef, useState, FormEvent } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import Hero from '../components/Hero.jsx';
+import Hero from '../components/Hero.js';
 import Error from './Error.jsx';
 import Loading from './Loading.jsx';
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
 import framerAnimations from '../utils/framer-anims.js';
-import { IContactPageData } from '../utils/types.js';
+import { ContactLoaderData } from '../utils/types.js';
 
 export const Contact = () => {
     const form = useRef<HTMLFormElement>(null);
-    const contactPageLoaderData = useLoaderData() as { contactData: IContactPageData; error: boolean, loading: boolean };
+    const contactPageLoaderData = useLoaderData() as ContactLoaderData;
 
     const { contactData, error, loading } = contactPageLoaderData;
     const [ emailSent, setEmailSent ] = useState(false);
     const [ emailLoading, setEmailLoading ] = useState(false);
     const [ emailError, setEmailError ] = useState(false);
-
-    console.log(contactPageLoaderData);
 
     const sendEmail = (e : FormEvent) => {
         e.preventDefault();

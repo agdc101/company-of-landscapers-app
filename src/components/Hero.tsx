@@ -1,7 +1,14 @@
+import React from "react";
 import { motion } from "framer-motion";
-import framerAnimations from "@/utils/framer-anims";
+import framerAnimations from "../utils/framer-anims.js";
 
-export default function Hero({imageUrl, imageAlt, title}) {
+interface HeroProps {
+    imageUrl: string;
+    imageAlt: string;
+    title?: string;
+}
+
+const Hero = ({imageUrl, imageAlt, title}: HeroProps) => {
     return (
         <section className="bg-black hero">
             <motion.div {...framerAnimations.slideRightFadeIn}>
@@ -17,3 +24,5 @@ export default function Hero({imageUrl, imageAlt, title}) {
         </section>
     );
 }   
+
+export default Hero;

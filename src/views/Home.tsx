@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import HomeHero from '../components/HomeHero.jsx';
 import Introduction from "../components/Introduction.jsx";
@@ -6,9 +6,13 @@ import Experience from "../components/Experience.js";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Error from './Error.jsx';
 import { IHomepageData } from '../utils/types.js';
+interface HomeLoaderData {
+  homepageData: IHomepageData;
+  error: boolean;
+}
 
-const Home:FC = () => {
-  const loaderData = useLoaderData() as { homepageData: IHomepageData; error: boolean };
+const Home = () => {
+  const loaderData = useLoaderData() as HomeLoaderData;
 
   const { homepageData, error } = loaderData;
 
