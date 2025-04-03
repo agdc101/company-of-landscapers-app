@@ -7,7 +7,7 @@ import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Error from './Error.jsx';
 import { Image, Entry } from '../utils/types.js';
 
-interface PortfolioEntry extends Entry {
+interface HomePortfolioEntry extends Entry {
   portfolioImage: Image;
 }
 
@@ -23,7 +23,7 @@ interface HomepageData {
     experienceDescription: string;
     experienceImage: Image[];
   }[],
-  entries: PortfolioEntry[];
+  entries: HomePortfolioEntry[];
 }
 
 interface HomePageLoaderData {

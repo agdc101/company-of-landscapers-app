@@ -6,20 +6,21 @@ import {
    PaginationItem,
    PaginationNext,
    PaginationPrevious,
- } from "@/components/ui/pagination"
+ } from "../components/ui/pagination.jsx"
  import {
    Carousel,
    CarouselContent,
    CarouselItem,
-} from "@/components/ui/carousel"
+} from "../components/ui/carousel.jsx"
 import Autoplay from "embla-carousel-autoplay"
 import { Link, useLoaderData } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
-import Hero from "@/components/Hero.tsx";
+import { Card, CardContent } from "../components/ui/card.tsx";
+import Hero from "../components/Hero.tsx";
 import Error from "./Error.tsx";
 import { motion } from "framer-motion";
-import framerAnimations from "@/utils/framer-anims";
+import framerAnimations from "../utils/framer-anims.ts";
 import Loading from "./Loading.tsx";
+
 
 export default function Portfolio() {
    const loaderData = useLoaderData();

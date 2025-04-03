@@ -14,7 +14,6 @@ export interface ContactDetailsData {
   phoneNumber: string,
 }
 
-
 export interface IHomeEntry {
   heroTitle: string;
   heroText: string;
@@ -27,32 +26,11 @@ export interface IHomeEntry {
   experienceImage: Image[];
 }
 
-interface IQuickLinkProps {
-  globalData: {
-      entries: Link[];
-      globalSet: ContactDetailsData;
-  };
-}
-
 export interface GlobalData {
   globalData: {
       entries: Link[];
       globalSet: ContactDetailsData;
   };
-}
-
-interface IHeroProps {
-  imageUrl: string;
-  imageAlt: string;
-  title?: string;
-}
-
-interface IIntroductionProps {
-  homePageData: IHomeEntry;
-}
-
-interface IExperienceProps {
-  homePage: IHomeEntry;
 }
 
 export interface Entry {
@@ -61,18 +39,21 @@ export interface Entry {
   slug: string;
 }
 
-interface IContactEntry extends Entry {
-  heroImage: Image[];
+// for portfolio.jsx 
+
+interface PortfolioEntry extends Entry {
+  portfolioImage: Image[];
 }
 
-
-interface IContactPageData {
-  contactEntries: IContactEntry[],
-  globalSet: ContactDetailsData;
-}
-
-interface ContactLoaderData {
-  contactData: IContactPageData;
-  error: boolean;
+interface PortfolioLoaderData {
+  portfolioData: {
+     portfolioEntries: PortfolioEntry[];
+     portfolioHomeEntries: {
+        title: string;
+        description: string;
+        heroImage: Image[];
+     }[];
+  };
+  error: { hasError: boolean; message?: string };
   loading: boolean;
 }
