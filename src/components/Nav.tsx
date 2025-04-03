@@ -3,9 +3,16 @@ import { useState, useEffect } from "react";
 import Hamburger from 'hamburger-react';
 import { NavLink, Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import framerAnimations from "../utils/framer-anims";
+import framerAnimations from "../utils/framer-anims.js";
 
-const Nav = (error) => {
+interface NavProps {
+    error: {
+        hasError: boolean;
+        message?: string;
+    };
+}
+
+const Nav = ( {error}: NavProps ) => {
     const [isOpen, setOpen] = useState(false);
     const { scrollY } = useScroll();
     const backgroundColor = useTransform(scrollY, [0, 200], ["rgba(0, 0, 0, 0)", "rgba(84, 111, 104, 1)"]);
@@ -32,7 +39,7 @@ const Nav = (error) => {
                 </ul>
             </motion.nav>
             {/* Mobile Hamburger Nav */}
-            <div className="md:hidden relative z-50 flex justify-end m-2 ml-auto">
+            <div className="md:hidden relative z-50 flex justify-end m-2 ml-auto">ß
                 <Hamburger className="bg-red" toggled={isOpen} toggle={setOpen} color={isOpen ? 'black' : 'white'}/>
             </div>
             <AnimatePresence>
