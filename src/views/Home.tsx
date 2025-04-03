@@ -5,11 +5,7 @@ import Introduction from "../components/Introduction.jsx";
 import Experience from "../components/Experience.js";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Error from './Error.jsx';
-import { Image, Entry } from '../utils/types.js';
-
-interface HomePortfolioEntry extends Entry {
-  portfolioImage: Image;
-}
+import { Image, Entry, HomePortfolioEntry } from '../utils/types.js';
 
 interface HomepageData {
   homeEntries: {

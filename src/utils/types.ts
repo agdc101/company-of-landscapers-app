@@ -14,16 +14,8 @@ export interface ContactDetailsData {
   phoneNumber: string,
 }
 
-export interface IHomeEntry {
-  heroTitle: string;
-  heroText: string;
-  heroImage: Image[];
-  introTitle: string;
-  introDescription: string;
-  introImage: Image[];
-  experienceTitle: string;
-  experienceDescription: string;
-  experienceImage: Image[];
+export interface HomePortfolioEntry extends Entry {
+  portfolioImage: Image[];
 }
 
 export interface GlobalData {
@@ -57,3 +49,4 @@ interface PortfolioLoaderData {
   error: { hasError: boolean; message?: string };
   loading: boolean;
 }
+

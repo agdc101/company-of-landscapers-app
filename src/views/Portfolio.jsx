@@ -6,12 +6,12 @@ import {
    PaginationItem,
    PaginationNext,
    PaginationPrevious,
- } from "../components/ui/pagination.jsx"
+ } from "../components/ui/pagination.tsx"
  import {
    Carousel,
    CarouselContent,
    CarouselItem,
-} from "../components/ui/carousel.jsx"
+} from "../components/ui/carousel.tsx"
 import Autoplay from "embla-carousel-autoplay"
 import { Link, useLoaderData } from "react-router-dom";
 import { Card, CardContent } from "../components/ui/card.tsx";

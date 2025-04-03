@@ -4,16 +4,22 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "./ui/carousel.jsx";
+} from "./ui/carousel.js";
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent } from "./ui/card.js";
 import { Link } from 'react-router-dom';
 import React, { useRef, FC } from 'react';
 import { useInView, motion } from 'framer-motion';
+import { HomePortfolioEntry } from "../utils/types.js";
 
-const FeaturedProjects = ({projectsData}) => {
+interface FeaturedProjectsProps {
+    projectsData: HomePortfolioEntry[];
+}
+
+const FeaturedProjects = ( {projectsData}: FeaturedProjectsProps ) => {
     const featProjects = useRef(null);
     const featProjectsTitle = useRef(null);
+    const plugin = useRef(Autoplay({ delay: 5000 }) as any);
 
     const featProjectsIsInView = useInView(featProjects, { once: true });
     const featProjectsTitleIsInView = useInView(featProjects, { once: true });
@@ -29,7 +35,7 @@ const FeaturedProjects = ({projectsData}) => {
             }} >Featured Projects
             </motion.h4>
             <div className="flex flex-col justify-evenly text-center items-center">
-                <Carousel plugins={[ Autoplay({delay: 2500}) ]} >
+                <Carousel plugins={[ plugin.current ]} >
                     <motion.div 
                         className="w-11/12 md:w-full mx-auto"
                         ref={featProjects}  
