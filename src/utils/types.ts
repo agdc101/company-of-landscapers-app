@@ -1,53 +1,78 @@
-interface IImage {
+export interface Image {
   alt: string;
   url: string;
 }
-
-interface IContactEntry {
-  id: string;
+export interface ILinkEntry {
   title: string;
-  description: string;
-  heroImage: IImage[];
+  slug: string;
 }
 
-interface IGlobalSetData {
+export interface GlobalSetData {
   id: string,
   email: string,
   streetAddress: string,
   phoneNumber: string,
 }
 
-interface IContactPageData {
-  contactEntries: IContactEntry[],
-  globalSet: IGlobalSetData;
-}
-
-export interface IPortfolioEntry {
+export interface PortfolioEntry {
   title: string;
   description: string;
   slug: string;
-  portfolioImage: IImage;
+  portfolioImage: Image;
 }
+
 
 export interface IHomeEntry {
   heroTitle: string;
   heroText: string;
-  heroImage: IImage[];
+  heroImage: Image[];
   introTitle: string;
   introDescription: string;
-  introImage: IImage[];
+  introImage: Image[];
   experienceTitle: string;
   experienceDescription: string;
-  experienceImage: IImage[];
+  experienceImage: Image[];
 }
 
-export interface ContactLoaderData {
-    contactData: IContactPageData;
-    error: boolean;
-    loading: boolean;
+interface IQuickLinkProps {
+  globalData: {
+      entries: ILinkEntry[];
+      globalSet: GlobalSetData;
+  };
 }
 
-export interface IHomepageData {
-  homeEntries: IHomeEntry[],
-  entries: IPortfolioEntry[];
+export interface GlobalData {
+  globalData: {
+      entries: ILinkEntry[];
+      globalSet: GlobalSetData;
+  };
+}
+
+interface IHeroProps {
+  imageUrl: string;
+  imageAlt: string;
+  title?: string;
+}
+
+interface IIntroductionProps {
+  homePageData: IHomeEntry;
+}
+
+interface IExperienceProps {
+  homePage: IHomeEntry;
+}
+
+interface IContactEntry extends PortfolioEntry {
+  heroImage: Image[];
+}
+
+interface IContactPageData {
+  contactEntries: IContactEntry[],
+  globalSet: GlobalSetData;
+}
+
+interface ContactLoaderData {
+  contactData: IContactPageData;
+  error: boolean;
+  loading: boolean;
 }

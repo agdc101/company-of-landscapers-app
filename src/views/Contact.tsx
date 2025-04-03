@@ -7,7 +7,22 @@ import Loading from './Loading.jsx';
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
 import framerAnimations from '../utils/framer-anims.js';
-import { ContactLoaderData } from '../utils/types.js';
+import { GlobalSetData, Image, PortfolioEntry } from '../utils/types.js';
+
+interface ContactEntry extends PortfolioEntry {
+    heroImage: Image[];
+}
+
+interface ContactPageData {
+    contactEntries: ContactEntry[],
+    globalSet: GlobalSetData;
+}
+
+interface ContactLoaderData {
+    contactData: ContactPageData;
+    error: { hasError: boolean; message?: string };
+    loading: boolean;
+}
 
 export const Contact = () => {
     const form = useRef<HTMLFormElement>(null);

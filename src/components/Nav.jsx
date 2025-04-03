@@ -1,9 +1,9 @@
-
+import React from "react";
 import { useState, useEffect } from "react";
 import Hamburger from 'hamburger-react';
 import { NavLink, Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import framerAnimations from "../utils/framer-anims";
+import framerAnimations from "../utils/framer-anims.js";
 
 const Nav = (error) => {
     const [isOpen, setOpen] = useState(false);

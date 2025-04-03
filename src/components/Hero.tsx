@@ -2,13 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import framerAnimations from "../utils/framer-anims.js";
 
-interface HeroProps {
+interface IHeroProps {
     imageUrl: string;
     imageAlt: string;
     title?: string;
 }
 
-const Hero = ({imageUrl, imageAlt, title}: HeroProps) => {
+const Hero = ({imageUrl, imageAlt, title}: IHeroProps) => {
     return (
         <section className="bg-black hero">
             <motion.div {...framerAnimations.slideRightFadeIn}>
