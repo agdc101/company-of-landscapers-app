@@ -6,7 +6,7 @@ import RootLayout from './components/Layout.jsx';
 import Error from './views/Error.jsx';
 import NotFound from './views/NotFound.jsx';
 import { globalLoader, homePageLoader, portfolioPageLoader, contactPageLoader } from './utils/loaders.js';
-import Loading from './views/Loading.jsx';  
+import Loading from './views/Loading.js';  
 import { Contact } from './views/Contact.js';
 const Home = lazy(() => import('./views/Home.js'));
 const Portfolio = lazy(() => import('./views/Portfolio.jsx'));

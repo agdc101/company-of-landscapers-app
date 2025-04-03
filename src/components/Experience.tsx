@@ -1,12 +1,16 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { IHomeEntry } from "../utils/types.js";
+import { Image } from "../utils/types.js";
 
-interface IExperienceProps {
-    homePage: IHomeEntry;
+interface ExperienceProps {
+    experienceContent: {
+        title: string;
+        description: string;
+        image: Image;
+    }
 }
 
-const Experience = ({ experienceContent }: any ) => {
+const Experience = ({ experienceContent }: ExperienceProps ) => {
     const expTextRef = useRef<HTMLDivElement>(null);
     const expTextIsInView = useInView(expTextRef, { once: true });
     const expImageRef = useRef<HTMLImageElement>(null);

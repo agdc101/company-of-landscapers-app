@@ -24,7 +24,7 @@ export default function PortfolioEntry() {
 
    return (
       <motion.section key={location.key}>
-         <Hero imageUrl={entry.portfolioImage[0].url} imageAlt={entry.portfolioImage[0].alt} title={entry.title} />
+         <Hero image={entry.portfolioImage[0]} title={entry.title} />
          <motion.div key={slug} className="grid grid-cols-1 gap-10 lg:gap-4" {...framerAnimations.slideRightFadeIn}>
             <div className="container py-2 md:py-4 xl:py-12">
                <p className="text-xl lg:text-3xl xl:text-4xl text-center py-8 xl:pb-16">{entry.description}</p>

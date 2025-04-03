@@ -1,9 +1,10 @@
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import React from "react";
+import Nav from "../components/Nav.jsx";
+import Footer from "../components/Footer.js";
 import { Link, useRouteError } from "react-router-dom";
 
 const Error = () => {
-    const error = useRouteError();
+    const error = useRouteError() as { message: string };
     console.error(error);
     const hasError = error ? true : false;
 

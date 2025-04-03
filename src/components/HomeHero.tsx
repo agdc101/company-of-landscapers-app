@@ -2,15 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import framerAnimations from "../utils/framer-anims.js";
+import { Image } from "../utils/types.js";
 
-interface IHeroProps {
-    imageUrl: string;
-    imageAlt: string;
-    title?: string;
-    text?: string;
+interface HomeHeroProps {
+    homeHeroContent: {
+        title: string;
+        text: string;
+        image: Image;
+    };
 }
 
-const Hero = ({homeHeroContent}: any) => {
+const Hero = ( {homeHeroContent}: HomeHeroProps ) => {
     return (
         <section className="bg-black hero">
             <motion.div {...framerAnimations.slideRightFadeIn}>
@@ -22,7 +24,7 @@ const Hero = ({homeHeroContent}: any) => {
                     </div>
                 </div>
                 <div className="hero-image-container top-0">
-                    <img src={homeHeroContent.imageUrl} alt={homeHeroContent.imageAlt} className="hero-image object-cover w-full h-screen inset-0" />
+                    <img src={homeHeroContent.image.url} alt={homeHeroContent.image.alt} className="hero-image object-cover w-full h-screen inset-0" />
                 </div>
             </motion.div>
         </section>
@@ -30,4 +32,3 @@ const Hero = ({homeHeroContent}: any) => {
 }   
 
 export default Hero;
-

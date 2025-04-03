@@ -7,15 +7,15 @@ import Loading from './Loading.jsx';
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
 import framerAnimations from '../utils/framer-anims.js';
-import { GlobalSetData, Image, PortfolioEntry } from '../utils/types.js';
+import { ContactDetailsData, Image, Entry } from '../utils/types.js';
 
-interface ContactEntry extends PortfolioEntry {
+interface ContactEntry extends Entry {
     heroImage: Image[];
 }
 
 interface ContactPageData {
     contactEntries: ContactEntry[],
-    globalSet: GlobalSetData;
+    globalSet: ContactDetailsData;
 }
 
 interface ContactLoaderData {
@@ -33,25 +33,22 @@ export const Contact = () => {
     const [ emailLoading, setEmailLoading ] = useState(false);
     const [ emailError, setEmailError ] = useState(false);
 
-    const sendEmail = (e : FormEvent) => {
+    const sendEmail = async (e : FormEvent) => {
         e.preventDefault();
         setEmailLoading(true);
 
         if (!form.current) return;
 
-        emailjs.sendForm('contact_form_service', 'template_6ku2azn', form.current, {
-            publicKey: 'GsRrK0jMcTebFw0Jp',
-        })
-        .then(() => {
+        try {
+            await emailjs.sendForm('contact_form_service', 'template_6ku2azn', form.current,{ publicKey: 'GsRrK0jMcTebFw0Jp' });
             setEmailSent(true);
-            setEmailLoading(false);
-            console.log('Email sent');
-        },
-        (error) => {
-            console.log(error.text);
+            form.current.reset(); // Clear form on success
+        } catch (error) {
+            console.error('Email send failed:', error);
             setEmailError(true);
+        } finally {
             setEmailLoading(false);
-        });
+        }
     };
 
     if (loading) return <Loading/>;
@@ -59,7 +56,7 @@ export const Contact = () => {
 
     return (
         <>
-            <Hero imageUrl={contactData.contactEntries[0].heroImage[0].url} imageAlt={contactData.contactEntries[0].heroImage[0].alt} title={contactData.contactEntries[0].title} />
+            <Hero image={contactData.contactEntries[0].heroImage[0]} title={contactData.contactEntries[0].title} />
             <motion.section className='py-8 md:py-16 xl:pt-20 xl:pb-28' {...framerAnimations.slideRightFadeIn}>
                 <div className="container flex flex-col lg:flex-row justify-between items-top pt-8 pb-12">
                     <div className="lg:w-1/2 lg:pr-12">

@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { GlobalData } from "../utils/types.js";
+import type { GlobalData } from "../utils/types.js";
 
-const QuickLinks = ({globalData}: GlobalData) => { 
+const QuickLinks = ( { globalData }: GlobalData ) => { 
+
     const latestProjects = globalData.entries;
     const email = globalData.globalSet.email;
     const number = globalData.globalSet.phoneNumber;
@@ -22,7 +23,7 @@ const QuickLinks = ({globalData}: GlobalData) => {
                 <div className="my-4 md:w-1/4">
                     <h3 className="text-xl xl:text-2xl mb-2 xl:mb-4 font-semibold">Latest Projects</h3>
                     <ul className="text-lg">
-                        {latestProjects.map((project, index : number) => (
+                        {latestProjects.map((project, index) => (
                             <li className="my-1" key={index}><NavLink to={`/portfolio/${project.slug}`}>{project.title}</NavLink></li>
                         ))}
                     </ul>

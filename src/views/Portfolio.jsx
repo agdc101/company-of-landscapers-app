@@ -16,10 +16,10 @@ import Autoplay from "embla-carousel-autoplay"
 import { Link, useLoaderData } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import Hero from "@/components/Hero.tsx";
-import Error from "./Error";
+import Error from "./Error.tsx";
 import { motion } from "framer-motion";
 import framerAnimations from "@/utils/framer-anims";
-import Loading from "./Loading";
+import Loading from "./Loading.tsx";
 
 export default function Portfolio() {
    const loaderData = useLoaderData();
@@ -35,7 +35,7 @@ export default function Portfolio() {
 
    return (
       <>
-         <Hero imageUrl={portfolioHomeData.heroImage[0].url} imageAlt={portfolioHomeData.heroImage[0].alt} title={portfolioHomeData.title} />
+         <Hero image={portfolioHomeData.heroImage[0]} title={portfolioHomeData.title} />
          <motion.section className="bg-[#fdf1e8]" {...framerAnimations.slideRightFadeIn} >
             <div className="py-2 text-center px-4 xl:px-8">
                {portfolioHomeData.description && <p className="text-lg xl:text-2xl xl:mb-16 max-w-5xl text-center mx-auto">{portfolioHomeData.description}</p>}

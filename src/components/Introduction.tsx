@@ -1,13 +1,17 @@
 import React from "react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { IHomeEntry } from "../utils/types.js";
+import { Image } from "../utils/types.js";
 
-interface IIntroductionProps {
-    homePageData: IHomeEntry;
-}
+interface IntroductionProps {
+    introContent: {
+        title: string;
+        description: string;
+        image: Image;
+    }
+};
 
-const Introduction = ({introContent} : any) => {
+const Introduction = ( {introContent} : IntroductionProps ) => {
     const introTextRef = useRef(null);
     const introTextIsInView = useInView(introTextRef, { once: true });
     const introImageRef = useRef(null);

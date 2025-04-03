@@ -2,23 +2,16 @@ export interface Image {
   alt: string;
   url: string;
 }
-export interface ILinkEntry {
+export interface Link {
   title: string;
   slug: string;
 }
 
-export interface GlobalSetData {
+export interface ContactDetailsData {
   id: string,
   email: string,
   streetAddress: string,
   phoneNumber: string,
-}
-
-export interface PortfolioEntry {
-  title: string;
-  description: string;
-  slug: string;
-  portfolioImage: Image;
 }
 
 
@@ -36,15 +29,15 @@ export interface IHomeEntry {
 
 interface IQuickLinkProps {
   globalData: {
-      entries: ILinkEntry[];
-      globalSet: GlobalSetData;
+      entries: Link[];
+      globalSet: ContactDetailsData;
   };
 }
 
 export interface GlobalData {
   globalData: {
-      entries: ILinkEntry[];
-      globalSet: GlobalSetData;
+      entries: Link[];
+      globalSet: ContactDetailsData;
   };
 }
 
@@ -62,13 +55,20 @@ interface IExperienceProps {
   homePage: IHomeEntry;
 }
 
-interface IContactEntry extends PortfolioEntry {
+export interface Entry {
+  title: string;
+  description: string;
+  slug: string;
+}
+
+interface IContactEntry extends Entry {
   heroImage: Image[];
 }
 
+
 interface IContactPageData {
   contactEntries: IContactEntry[],
-  globalSet: GlobalSetData;
+  globalSet: ContactDetailsData;
 }
 
 interface ContactLoaderData {
