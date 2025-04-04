@@ -13,6 +13,7 @@ export interface Entries {
   title: string;
   description: string;
   slug?: string; 
+  projectDescription?: string;
   portfolioImage?: Images[];
   heroImage?: Images[];
 }
@@ -28,5 +29,12 @@ export interface GlobalLoaderData {
   globalData: {
       entries: Links[];
       globalSet: ContactDetailsData;
+  };
+}
+
+export interface PortfolioLoaderData {
+  portfolioData: {
+     portfolioEntries: Entries[];
+     portfolioHomeEntries: Entries[];
   };
 }

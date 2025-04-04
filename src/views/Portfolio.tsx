@@ -18,15 +18,7 @@ import { Card, CardContent } from "../components/ui/card.js";
 import Hero from "../components/Hero.js";
 import { motion } from "framer-motion";
 import framerAnimations from "../utils/framer-anims.js";
-import { Entries } from "../utils/types.js";
-
-
-interface PortfolioLoaderData {
-  portfolioData: {
-     portfolioEntries: Entries[];
-     portfolioHomeEntries: Entries[];
-  };
-}
+import { PortfolioLoaderData } from "../utils/types.js";
 
 
 const Portfolio = () => {

@@ -1,41 +1,42 @@
+import React from "react";
 import { useParams, useLoaderData, useLocation, Link } from "react-router-dom";
-import Hero from "@/components/Hero";
-import Error from "./Error";
+import Hero from "../components/Hero.js";
+import Error from "./Error.js";
 import { motion } from "framer-motion";
-import framerAnimations from "@/utils/framer-anims";
-import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import framerAnimations from "../utils/framer-anims.js";
+import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from "../components/ui/carousel.js";
 import Autoplay from "embla-carousel-autoplay";
 import { Image } from 'antd';
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card.js";
+import { PortfolioLoaderData } from "../utils/types.js";
 
-export default function PortfolioEntry() {
-   const { portfolioData, error, loading } = useLoaderData();
+
+const PortfolioEntry = () => {
+   const { portfolioData } = useLoaderData() as PortfolioLoaderData;
    const { slug } = useParams();
    const location = useLocation();
-
-   if (loading) return <p>Loading...</p>;
-   if (error) return <Error/>;
 
    const entries = portfolioData.portfolioEntries;
    const currentIndex = entries.findIndex(entry => entry.slug === slug);
    const entry = entries[currentIndex];
    const nextEntry = entries[currentIndex + 1] || entries[0];
    const previousEntry = entries[currentIndex - 1] || entries[entries.length - 1];
+   const heroImage = entry.portfolioImage ? entry.portfolioImage[0] : { url: '', alt: '' };
 
    return (
       <motion.section key={location.key}>
-         <Hero image={entry.portfolioImage[0]} title={entry.title} />
+         <Hero image={heroImage} title={entry.title} />
          <motion.div key={slug} className="grid grid-cols-1 gap-10 lg:gap-4" {...framerAnimations.slideRightFadeIn}>
             <div className="container py-2 md:py-4 xl:py-12">
                <p className="text-xl lg:text-3xl xl:text-4xl text-center py-8 xl:pb-16">{entry.description}</p>
                <p className="text-center text-slate-600 lg:text-xl xl:text-2xl xl:mb-6">{entry.projectDescription}</p>
             </div>
             <div className="bg-[#fdf1e8] p-4 md:px-16 xl:px-20 md:mb-2 xl:mb-0 lg:py-12 lg:px-6 md:pt-8 flex">
-               <Carousel plugins={[ Autoplay({ delay: 2500 }) ]}>
+               <Carousel plugins={[ Autoplay({ delay: 2500 }) as any ]}>
                   <p className="mb-4 xl:mb-6 lg:text-xl xl:text-2xl">{entry.title} in Pictures:</p>
                   <CarouselContent>
                      <Image.PreviewGroup>
-                        {entry.portfolioImage.map((image, index) => (
+                        {entry.portfolioImage?.map((image, index) => (
                            <CarouselItem className="md:basis-1/2 lg:basis-1/3" key={index}>
                               <Card className="mx-auto">
                                  <CardContent className="p-3">
@@ -65,3 +66,5 @@ export default function PortfolioEntry() {
       </motion.section>
    );
 }
+
+export default PortfolioEntry;

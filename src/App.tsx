@@ -10,7 +10,7 @@ import Loading from './views/Loading.js';
 import { Contact } from './views/Contact.js';
 const Home = lazy(() => import('./views/Home.js'));
 const Portfolio = lazy(() => import('./views/Portfolio.jsx'));
-const PortfolioEntry = lazy(() => import('./views/PortfolioEntry.jsx'));
+const PortfolioEntry = lazy(() => import('./views/PortfolioEntry.js'));
 
 function App() {
 
