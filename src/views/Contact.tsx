@@ -2,24 +2,16 @@ import React, { useRef, useState, FormEvent } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import Hero from '../components/Hero.js';
-import Error from './Error.jsx';
-import Loading from './Loading.jsx';
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
 import framerAnimations from '../utils/framer-anims.js';
-import { ContactDetailsData, Image, Entry } from '../utils/types.js';
-
-interface ContactEntry extends Entry {
-    heroImage: Image[];
-}
-
-interface ContactPageData {
-    contactEntries: ContactEntry[],
-    globalSet: ContactDetailsData;
-}
+import { ContactDetailsData, Entries } from '../utils/types.js';
 
 interface ContactLoaderData {
-    contactData: ContactPageData;
+    contactData: {
+        contactEntries: Entries[],
+        globalSet: ContactDetailsData;
+    }
 }
 
 export const Contact = () => {
@@ -30,6 +22,9 @@ export const Contact = () => {
     const [ emailSent, setEmailSent ] = useState(false);
     const [ emailLoading, setEmailLoading ] = useState(false);
     const [ emailError, setEmailError ] = useState(false);
+
+    const heroImage = contactData.contactEntries[0].heroImage ? contactData.contactEntries[0].heroImage[0] : { url: '', alt: '' };
+    const heroTitle = contactData.contactEntries[0].title;
 
     const sendEmail = async (e : FormEvent) => {
         e.preventDefault();
@@ -51,7 +46,7 @@ export const Contact = () => {
 
     return (
         <>
-            <Hero image={contactData.contactEntries[0].heroImage[0]} title={contactData.contactEntries[0].title} />
+            <Hero image={heroImage} title={heroTitle} />
             <motion.section className='py-8 md:py-16 xl:pt-20 xl:pb-28' {...framerAnimations.slideRightFadeIn}>
                 <div className="container flex flex-col lg:flex-row justify-between items-top pt-8 pb-12">
                     <div className="lg:w-1/2 lg:pr-12">

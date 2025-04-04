@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import framerAnimations from "../utils/framer-anims.js";
-import { Image } from "../utils/types.js";
+import { Images } from "../utils/types.js";
 
-interface HeroProps {
-    image: Image;
+type HeroProps = {
+    image: Images;
     title: string;
 }
 

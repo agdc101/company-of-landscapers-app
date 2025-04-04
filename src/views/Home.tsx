@@ -4,25 +4,23 @@ import HomeHero from '../components/HomeHero.jsx';
 import Introduction from "../components/Introduction.jsx";
 import Experience from "../components/Experience.js";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
-import { Image, HomePortfolioEntry } from '../utils/types.js';
-
-interface HomepageData {
-  homeEntries: {
-    heroTitle: string;
-    heroText: string;
-    heroImage: Image[];
-    introTitle: string;
-    introDescription: string;
-    introImage: Image[];
-    experienceTitle: string;
-    experienceDescription: string;
-    experienceImage: Image[];
-  }[],
-  entries: HomePortfolioEntry[];
-}
+import { Images, Entries } from '../utils/types.js';
 
 interface HomePageLoaderData {
-  homepageData: HomepageData;
+  homepageData: {
+    homeEntries: {
+      heroTitle: string;
+      heroText: string;
+      heroImage: Images[];
+      introTitle: string;
+      introDescription: string;
+      introImage: Images[];
+      experienceTitle: string;
+      experienceDescription: string;
+      experienceImage: Images[];
+    }[],
+    entries: Entries[];
+  }
 }
 
 const Home = () => {

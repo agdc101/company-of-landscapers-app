@@ -5,11 +5,11 @@ import Footer from "./Footer.js";
 import QuickLinks from "./QuickLinks.jsx";
 import { useLoaderData } from "react-router-dom";
 import Loading from "../views/Loading.jsx";
-import { GlobalData } from "../utils/types.js";
+import { GlobalLoaderData } from "../utils/types.js";
 
 const RootLayout = () => {
     const navigation = useNavigation();
-    const globalPageData = useLoaderData() as GlobalData;
+    const globalPageData = useLoaderData() as GlobalLoaderData;
     const { globalData } = globalPageData;
 
     if (!globalData.globalSet || !globalData.entries) {

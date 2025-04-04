@@ -1,10 +1,20 @@
-export interface Image {
+export interface Images {
+  id? : number;
+  title? : string;
   alt: string;
   url: string;
 }
-export interface Link {
+export interface Links {
   title: string;
   slug: string;
+}
+
+export interface Entries {
+  title: string;
+  description: string;
+  slug?: string; 
+  portfolioImage?: Images[];
+  heroImage?: Images[];
 }
 
 export interface ContactDetailsData {
@@ -14,39 +24,9 @@ export interface ContactDetailsData {
   phoneNumber: string,
 }
 
-export interface HomePortfolioEntry extends Entry {
-  portfolioImage: Image[];
-}
-
-export interface GlobalData {
+export interface GlobalLoaderData {
   globalData: {
-      entries: Link[];
+      entries: Links[];
       globalSet: ContactDetailsData;
   };
 }
-
-export interface Entry {
-  title: string;
-  description: string;
-  slug: string;
-}
-
-// for portfolio.jsx 
-
-interface PortfolioEntry extends Entry {
-  portfolioImage: Image[];
-}
-
-interface PortfolioLoaderData {
-  portfolioData: {
-     portfolioEntries: PortfolioEntry[];
-     portfolioHomeEntries: {
-        title: string;
-        description: string;
-        heroImage: Image[];
-     }[];
-  };
-  error: { hasError: boolean; message?: string };
-  loading: boolean;
-}
-

@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import type { GlobalData } from "../utils/types.js";
+import type { GlobalLoaderData } from "../utils/types.js";
 
-const QuickLinks = ( { globalData }: GlobalData ) => { 
+const QuickLinks = ( { globalData }: GlobalLoaderData ) => { 
 
     const latestProjects = globalData.entries;
     const email = globalData.globalSet.email;

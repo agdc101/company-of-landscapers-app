@@ -6,32 +6,42 @@ import {
    PaginationItem,
    PaginationNext,
    PaginationPrevious,
- } from "../components/ui/pagination.tsx"
+ } from "../components/ui/pagination.js"
  import {
    Carousel,
    CarouselContent,
    CarouselItem,
-} from "../components/ui/carousel.tsx"
+} from "../components/ui/carousel.js"
 import Autoplay from "embla-carousel-autoplay"
 import { Link, useLoaderData } from "react-router-dom";
-import { Card, CardContent } from "../components/ui/card.tsx";
-import Hero from "../components/Hero.tsx";
+import { Card, CardContent } from "../components/ui/card.js";
+import Hero from "../components/Hero.js";
 import { motion } from "framer-motion";
-import framerAnimations from "../utils/framer-anims.ts";
+import framerAnimations from "../utils/framer-anims.js";
+import { Entries } from "../utils/types.js";
 
 
-export default function Portfolio() {
-   const loaderData = useLoaderData();
+interface PortfolioLoaderData {
+  portfolioData: {
+     portfolioEntries: Entries[];
+     portfolioHomeEntries: Entries[];
+  };
+}
+
+
+const Portfolio = () => {
+   const loaderData = useLoaderData() as PortfolioLoaderData;
    const { portfolioData } = loaderData;
    const portfolioHomeData = portfolioData.portfolioHomeEntries[0];
    const portfolioEntries = portfolioData.portfolioEntries;
    const [startIndex, setStartIndex] = useState(0);
    const itemsPerPage = 3;
    const endIndex = Math.min(startIndex + itemsPerPage, portfolioEntries.length);
+   const heroImage = portfolioHomeData.heroImage ? portfolioHomeData.heroImage[0] : { url: '', alt: '' };
 
    return (
       <>
-         <Hero image={portfolioHomeData.heroImage[0]} title={portfolioHomeData.title} />
+         <Hero image={heroImage} title={portfolioHomeData.title} />
          <motion.section className="bg-[#fdf1e8]" {...framerAnimations.slideRightFadeIn} >
             <div className="py-2 text-center px-4 xl:px-8">
                {portfolioHomeData.description && <p className="text-lg xl:text-2xl xl:mb-16 max-w-5xl text-center mx-auto">{portfolioHomeData.description}</p>}
@@ -50,9 +60,9 @@ export default function Portfolio() {
                               <Link to={`/portfolio/${entry.slug}`} className="hover:text-black">
                                  <h2 className="text-xl xl:text-2xl font-medium text-center my-2">{entry.title}</h2>
                                  <p className="text-center xl:text-lg my-4 xl:my-6 italic">{entry.description}</p>
-                                 <Carousel plugins={[ Autoplay({delay: 2500}) ]} >
+                                 <Carousel plugins={[ Autoplay({delay: 2500}) as any ]} >
                                     <CarouselContent>
-                                          {entry.portfolioImage.map((image, index) => (
+                                          {entry.portfolioImage?.map((image, index) => (
                                              <CarouselItem key={index}>
                                                 <img loading="lazy" className="rounded shadow-custom mx-auto" src={image.url} alt={image.alt} />
                                              </CarouselItem>
@@ -94,3 +104,5 @@ export default function Portfolio() {
       </>
    );
 }
+
+export default Portfolio;
