@@ -18,7 +18,7 @@ export const get_global_set = gql`
     }
   }`;
 
-export const get_homepage_set = gql`
+export const get_homepage_set  = gql`
   query getHomepage {
     homeEntries {
       ... on home_Entry {

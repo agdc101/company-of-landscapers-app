@@ -1,10 +1,14 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
+import type { GlobalLoaderData } from "../utils/types.js";
 
-export default function QuickLinks({globalData}) {
+const QuickLinks = ( { globalData }: GlobalLoaderData ) => { 
+
     const latestProjects = globalData.entries;
     const email = globalData.globalSet.email;
     const number = globalData.globalSet.phoneNumber;
     const address = globalData.globalSet.streetAddress;
+
 
     return (
         <section className="quicklinks bg-[#333333] text-white py-6 xl:py-10 px-2 xl:px-6">
@@ -41,3 +45,5 @@ export default function QuickLinks({globalData}) {
         </section>
     );
 }
+
+export default QuickLinks;

@@ -1,45 +1,52 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, FormEvent } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import Hero from '@/components/Hero';
-import Error from './Error';
-import Loading from './Loading';
+import Hero from '../components/Hero.js';
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
-import framerAnimations from '@/utils/framer-anims';
+import framerAnimations from '../utils/framer-anims.js';
+import { ContactDetailsData, Entries } from '../utils/types.js';
+
+interface ContactLoaderData {
+    contactData: {
+        contactEntries: Entries[],
+        globalSet: ContactDetailsData;
+    }
+}
 
 export const Contact = () => {
-    const form = useRef();
-    const { contactData, error, loading } = useLoaderData();
+    const form = useRef<HTMLFormElement>(null);
+    const contactPageLoaderData = useLoaderData() as ContactLoaderData;
+
+    const { contactData } = contactPageLoaderData;
     const [ emailSent, setEmailSent ] = useState(false);
     const [ emailLoading, setEmailLoading ] = useState(false);
     const [ emailError, setEmailError ] = useState(false);
 
-    const sendEmail = (e) => {
+    const heroImage = contactData.contactEntries[0].heroImage ? contactData.contactEntries[0].heroImage[0] : { url: '', alt: '' };
+    const heroTitle = contactData.contactEntries[0].title;
+
+    const sendEmail = async (e : FormEvent) => {
         e.preventDefault();
         setEmailLoading(true);
 
-        emailjs.sendForm('contact_form_service', 'template_6ku2azn', form.current, {
-            publicKey: 'GsRrK0jMcTebFw0Jp',
-        })
-        .then(() => {
-            setEmailSent(true);
-            setEmailLoading(false);
-            console.log('Email sent');
-        },
-        (error) => {
-            console.log(error.text);
-            setEmailError(true);
-            setEmailLoading(false);
-        });
-    };
+        if (!form.current) return;
 
-    if (loading) return <Loading/>;
-    if (error) return <Error/>;
+        try {
+            await emailjs.sendForm('contact_form_service', 'template_6ku2azn', form.current,{ publicKey: 'GsRrK0jMcTebFw0Jp' });
+            setEmailSent(true);
+            form.current.reset();
+        } catch (error) {
+            console.error('Email send failed:', error);
+            setEmailError(true);
+        } finally {
+            setEmailLoading(false);
+        }
+    };
 
     return (
         <>
-            <Hero imageUrl={contactData.contactEntries[0].heroImage[0].url} imageAlt={contactData.contactEntries[0].heroImage[0].alt} title={contactData.contactEntries[0].title} />
+            <Hero image={heroImage} title={heroTitle} />
             <motion.section className='py-8 md:py-16 xl:pt-20 xl:pb-28' {...framerAnimations.slideRightFadeIn}>
                 <div className="container flex flex-col lg:flex-row justify-between items-top pt-8 pb-12">
                     <div className="lg:w-1/2 lg:pr-12">

@@ -4,16 +4,22 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { Card, CardContent } from "@/components/ui/card"
+} from "./ui/carousel.tsx";
+import Autoplay from "embla-carousel-autoplay";
+import { Card, CardContent } from "./ui/card.tsx";
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import React, { useRef, FC } from 'react';
 import { useInView, motion } from 'framer-motion';
+import { Entries } from "../utils/types.ts";
 
-export default function FeaturedProjects({projectsData}) {
+interface FeaturedProjectsProps {
+    projectsData: Entries[];
+}
+
+const FeaturedProjects = ( {projectsData}: FeaturedProjectsProps ) => {
     const featProjects = useRef(null);
     const featProjectsTitle = useRef(null);
+    const plugin = useRef(Autoplay({ delay: 5000 }) as any);
 
     const featProjectsIsInView = useInView(featProjects, { once: true });
     const featProjectsTitleIsInView = useInView(featProjects, { once: true });
@@ -29,7 +35,7 @@ export default function FeaturedProjects({projectsData}) {
             }} >Featured Projects
             </motion.h4>
             <div className="flex flex-col justify-evenly text-center items-center">
-                <Carousel plugins={[ Autoplay({delay: 2500}) ]} >
+                <Carousel plugins={[ plugin.current ]} >
                     <motion.div 
                         className="w-11/12 md:w-full mx-auto"
                         ref={featProjects}  
@@ -45,7 +51,7 @@ export default function FeaturedProjects({projectsData}) {
                                             <h4 className="text-2xl mt-5">{project.title}</h4>
                                             <p className="text-slate-800 italic my-5 md:my-8 2xl:text-lg">{project.description}</p>
                                             <Link to={`/portfolio/${project.slug}`}>
-                                                <img loading="lazy" className="rounded shadow-custom mx-auto" src={project.portfolioImage[0].url} alt={project.portfolioImage[0].alt} />
+                                                <img loading="lazy" className="rounded shadow-custom mx-auto" src={project.portfolioImage?.[0]?.url || 'https://placehold.co/400'} alt={project.portfolioImage?.[0]?.url || 'project image'} />
                                             </Link>
                                             <Link to={`/portfolio/${project.slug}`} className="mt-5 border italic block text-center rounded py-2 w-2/6 md:w-3/6 lg:w-3/6 m-auto xl:text-lg 2xl:mt-7">View project</Link>
                                         </CardContent>
@@ -63,3 +69,5 @@ export default function FeaturedProjects({projectsData}) {
     )
 
 }
+
+export default FeaturedProjects;
