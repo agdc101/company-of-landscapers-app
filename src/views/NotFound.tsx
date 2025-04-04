@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
     return (
         <div className="mx-auto flex flex-col min-h-svh">
-            <Nav isMainNav={false} />
+            <Nav hasError={true} />
             <main className="flex-1 flex flex-col items-center justify-center" >
                 <h1 className="text-4xl xl:text-5xl mb-6">404</h1>
                 <p className="text-3xl">Oops! Seems like this page does not exist</p>

@@ -5,9 +5,13 @@ import { get_homepage_set, get_portfolio_set, get_global_set, get_contact_set } 
 const loadData = async (query : DocumentNode, key : string) => {
   try {
     const { data } = await client.query({ query });
-    return { [key]: data, error : null };
+    
+    if (!data) throw new Error(`Error fetching ${key} data from Craft.`);
+    return { [key]: data};
+
   } catch (error) {
-    return { [key]: null, error : true };
+    console.error(error);
+    throw new Error('Error Fetching Data From Craft. Please Contact Developer');
   }
 };
 

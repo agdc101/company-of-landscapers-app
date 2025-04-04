@@ -16,23 +16,18 @@ import Autoplay from "embla-carousel-autoplay"
 import { Link, useLoaderData } from "react-router-dom";
 import { Card, CardContent } from "../components/ui/card.tsx";
 import Hero from "../components/Hero.tsx";
-import Error from "./Error.tsx";
 import { motion } from "framer-motion";
 import framerAnimations from "../utils/framer-anims.ts";
-import Loading from "./Loading.tsx";
 
 
 export default function Portfolio() {
    const loaderData = useLoaderData();
-   const { portfolioData, error, loading } = loaderData;
+   const { portfolioData } = loaderData;
    const portfolioHomeData = portfolioData.portfolioHomeEntries[0];
    const portfolioEntries = portfolioData.portfolioEntries;
    const [startIndex, setStartIndex] = useState(0);
    const itemsPerPage = 3;
    const endIndex = Math.min(startIndex + itemsPerPage, portfolioEntries.length);
-
-   if (loading) return <Loading/>;
-   if (error) return <Error/>;
 
    return (
       <>

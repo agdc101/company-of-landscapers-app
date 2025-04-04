@@ -4,20 +4,17 @@ import Nav from "./Nav.jsx";
 import Footer from "./Footer.js";
 import QuickLinks from "./QuickLinks.jsx";
 import { useLoaderData } from "react-router-dom";
-import Error from "../views/Error.jsx";
 import Loading from "../views/Loading.jsx";
 import { GlobalData } from "../utils/types.js";
 
-interface GlobalLoaderData extends GlobalData {
-    error: { hasError: boolean; message?: string };
-  }
-
-export default function RootLayout() {
+const RootLayout = () => {
     const navigation = useNavigation();
-    const globalPageData = useLoaderData() as GlobalLoaderData;
-    const { globalData, error } = globalPageData;
+    const globalPageData = useLoaderData() as GlobalData;
+    const { globalData } = globalPageData;
 
-    if (error) return ( <Error/>);
+    if (!globalData.globalSet || !globalData.entries) {
+        throw new Error("Global data not found. Contact Developer");
+    }
 
     return (
         <div className="mx-auto flex flex-col min-h-svh overflow-hidden">
@@ -31,3 +28,5 @@ export default function RootLayout() {
         </div>
     );
 }
+
+export default RootLayout;

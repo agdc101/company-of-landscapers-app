@@ -20,15 +20,13 @@ interface ContactPageData {
 
 interface ContactLoaderData {
     contactData: ContactPageData;
-    error: { hasError: boolean; message?: string };
-    loading: boolean;
 }
 
 export const Contact = () => {
     const form = useRef<HTMLFormElement>(null);
     const contactPageLoaderData = useLoaderData() as ContactLoaderData;
 
-    const { contactData, error, loading } = contactPageLoaderData;
+    const { contactData } = contactPageLoaderData;
     const [ emailSent, setEmailSent ] = useState(false);
     const [ emailLoading, setEmailLoading ] = useState(false);
     const [ emailError, setEmailError ] = useState(false);
@@ -42,7 +40,7 @@ export const Contact = () => {
         try {
             await emailjs.sendForm('contact_form_service', 'template_6ku2azn', form.current,{ publicKey: 'GsRrK0jMcTebFw0Jp' });
             setEmailSent(true);
-            form.current.reset(); // Clear form on success
+            form.current.reset();
         } catch (error) {
             console.error('Email send failed:', error);
             setEmailError(true);
@@ -50,9 +48,6 @@ export const Contact = () => {
             setEmailLoading(false);
         }
     };
-
-    if (loading) return <Loading/>;
-    if (error) return <Error/>;
 
     return (
         <>

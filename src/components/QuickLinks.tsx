@@ -9,6 +9,7 @@ const QuickLinks = ( { globalData }: GlobalData ) => {
     const number = globalData.globalSet.phoneNumber;
     const address = globalData.globalSet.streetAddress;
 
+
     return (
         <section className="quicklinks bg-[#333333] text-white py-6 xl:py-10 px-2 xl:px-6">
             <div className="flex flex-col md:flex-row justify-center md:justify-between xl:justify-center pl-8 md:px-4 md:py-6">

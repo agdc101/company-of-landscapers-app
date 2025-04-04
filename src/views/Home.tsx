@@ -4,8 +4,7 @@ import HomeHero from '../components/HomeHero.jsx';
 import Introduction from "../components/Introduction.jsx";
 import Experience from "../components/Experience.js";
 import FeaturedProjects from '../components/FeaturedProjects.jsx';
-import Error from './Error.jsx';
-import { Image, Entry, HomePortfolioEntry } from '../utils/types.js';
+import { Image, HomePortfolioEntry } from '../utils/types.js';
 
 interface HomepageData {
   homeEntries: {
@@ -24,18 +23,15 @@ interface HomepageData {
 
 interface HomePageLoaderData {
   homepageData: HomepageData;
-  error: { hasError: boolean; message?: string };
 }
 
 const Home = () => {
   const loaderData = useLoaderData() as HomePageLoaderData;
 
-  const { homepageData, error } = loaderData;
+  const { homepageData } = loaderData;
   const { heroImage, heroTitle, heroText, introTitle, introDescription, introImage, experienceTitle, experienceDescription, experienceImage } = homepageData.homeEntries[0];
   const [ heroImg, introImg, experienceImg ] = [ heroImage[0], introImage[0], experienceImage[0] ];
   const featuredProjectsData = homepageData.entries;
-
-  if (error) return <Error />;
 
   return (
     <>
