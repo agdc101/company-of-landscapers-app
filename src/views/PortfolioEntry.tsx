@@ -21,7 +21,7 @@ const PortfolioEntry = () => {
    const entry = entries[currentIndex];
    const nextEntry = entries[currentIndex + 1] || entries[0];
    const previousEntry = entries[currentIndex - 1] || entries[entries.length - 1];
-   const heroImage = entry.portfolioImage ? entry.portfolioImage[0] : { url: 'https://placehold.co/400', alt: 'portfolio image' };
+   const heroImage = entry.portfolioImage ? entry.portfolioImage[0] : { url: 'https://placehold.co/400', alt: 'hero image placeholder' };
 
    return (
       <motion.section key={location.key}>
