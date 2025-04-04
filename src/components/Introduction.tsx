@@ -1,13 +1,13 @@
 import React from "react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Image } from "../utils/types.js";
+import { Images } from "../utils/types.tsx";
 
 interface IntroductionProps {
     introContent: {
         title: string;
         description: string;
-        image: Image;
+        image: Images;
     }
 };
 

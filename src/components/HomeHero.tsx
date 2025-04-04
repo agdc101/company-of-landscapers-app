@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import framerAnimations from "../utils/framer-anims.js";
-import { Image } from "../utils/types.js";
+import framerAnimations from "../utils/framer-anims.ts";
+import { Images } from "../utils/types.js";
 
 interface HomeHeroProps {
     homeHeroContent: {
         title: string;
         text: string;
-        image: Image;
+        image: Images;
     };
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import framerAnimations from "../utils/framer-anims.js";
+import framerAnimations from "../utils/framer-anims.ts";
 import { Images } from "../utils/types.js";
 
 type HeroProps = {

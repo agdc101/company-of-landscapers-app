@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet, ScrollRestoration, useNavigation } from "react-router-dom";
-import Nav from "./Nav.jsx";
-import Footer from "./Footer.js";
-import QuickLinks from "./QuickLinks.jsx";
+import Nav from "./Nav.tsx";
+import Footer from "./Footer.tsx";
+import QuickLinks from "./QuickLinks.tsx";
 import { useLoaderData } from "react-router-dom";
 import Loading from "../views/Loading.jsx";
-import { GlobalLoaderData } from "../utils/types.js";
+import { GlobalLoaderData } from "../utils/types.ts";
 
 const RootLayout = () => {
     const navigation = useNavigation();

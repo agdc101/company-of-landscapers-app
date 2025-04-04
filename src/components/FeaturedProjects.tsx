@@ -4,16 +4,16 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "./ui/carousel.js";
+} from "./ui/carousel.tsx";
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "./ui/card.js";
+import { Card, CardContent } from "./ui/card.tsx";
 import { Link } from 'react-router-dom';
 import React, { useRef, FC } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { HomePortfolioEntry } from "../utils/types.js";
+import { Entries } from "../utils/types.ts";
 
 interface FeaturedProjectsProps {
-    projectsData: HomePortfolioEntry[];
+    projectsData: Entries[];
 }
 
 const FeaturedProjects = ( {projectsData}: FeaturedProjectsProps ) => {
@@ -51,7 +51,7 @@ const FeaturedProjects = ( {projectsData}: FeaturedProjectsProps ) => {
                                             <h4 className="text-2xl mt-5">{project.title}</h4>
                                             <p className="text-slate-800 italic my-5 md:my-8 2xl:text-lg">{project.description}</p>
                                             <Link to={`/portfolio/${project.slug}`}>
-                                                <img loading="lazy" className="rounded shadow-custom mx-auto" src={project.portfolioImage[0].url} alt={project.portfolioImage[0].alt} />
+                                                <img loading="lazy" className="rounded shadow-custom mx-auto" src={project.portfolioImage?.[0]?.url || 'https://placehold.co/400'} alt={project.portfolioImage?.[0]?.url || 'project image'} />
                                             </Link>
                                             <Link to={`/portfolio/${project.slug}`} className="mt-5 border italic block text-center rounded py-2 w-2/6 md:w-3/6 lg:w-3/6 m-auto xl:text-lg 2xl:mt-7">View project</Link>
                                         </CardContent>

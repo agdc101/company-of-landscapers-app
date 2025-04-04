@@ -1,10 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Hamburger from 'hamburger-react';
 import { NavLink, Link } from "react-router-dom";
-import MobileNav from "./MobileNav.js";
+import MobileNav from "./MobileNav.tsx";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import framerAnimations from "../utils/framer-anims.js";
+import framerAnimations from "../utils/framer-anims.ts";
 
 interface NavProps {
     hasError?: boolean;

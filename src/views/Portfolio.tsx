@@ -29,7 +29,7 @@ const Portfolio = () => {
    const [startIndex, setStartIndex] = useState(0);
    const itemsPerPage = 3;
    const endIndex = Math.min(startIndex + itemsPerPage, portfolioEntries.length);
-   const heroImage = portfolioHomeData.heroImage ? portfolioHomeData.heroImage[0] : { url: '', alt: '' };
+   const heroImage = portfolioHomeData.heroImage ? portfolioHomeData.heroImage[0] : { url: 'https://placehold.co/400', alt: 'portfolio image' };
 
    return (
       <>
